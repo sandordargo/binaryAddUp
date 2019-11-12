@@ -3,6 +3,7 @@
 
 #include <bitset>
 #include <limits>
+#include <exception>
 
 TEST(BinaryAddUp, sumOfZeros_Is_Zero) {
     ASSERT_EQ(0, BinaryAddUp::add(0,0));
@@ -33,10 +34,19 @@ TEST(BinaryAddUp, biggestNonOverflowingNumberDoesNotThrowException) {
               BinaryAddUp::add(std::numeric_limits<int>::max()-1,1));
 }
 
+TEST(BinaryAddUp, smallestOverflowingPositiveNumberThrowsException) {
+    ASSERT_THROW(BinaryAddUp::add(std::numeric_limits<int>::max(),1), std::overflow_error);
+}
+
 TEST(BinaryAddUp, smallestNonOverflowingNumberDoesNotThrowException) {
     ASSERT_EQ(std::numeric_limits<int>::min(),
               BinaryAddUp::add(std::numeric_limits<int>::min()+1,-1));
 }
+
+TEST(BinaryAddUp, biggestOverflowingNumberThrowsException) {
+    ASSERT_THROW(BinaryAddUp::add(std::numeric_limits<int>::min(),-1), std::overflow_error);
+}
+
 
 TEST(BinaryAddUp, convertZeroToBitsetOfZeros) {
     ASSERT_EQ(std::bitset<32>("00000000000000000000000000000000"), BinaryAddUp::intToBitset(0));
