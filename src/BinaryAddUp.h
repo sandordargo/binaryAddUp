@@ -12,7 +12,8 @@ namespace BinaryAddUp {
     }
 
     int add(int a, int b) {
-        return a+b;
+        auto resultBits{intToBitset(0)};
+        return resultBits.to_ulong();
     }
 }
 
