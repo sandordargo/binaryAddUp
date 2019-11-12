@@ -2,6 +2,7 @@
 #include "BinaryAddUp.h"
 
 #include <bitset>
+#include <limits>
 
 TEST(BinaryAddUp, sumOfZeros_Is_Zero) {
     ASSERT_EQ(0, BinaryAddUp::add(0,0));
@@ -25,6 +26,16 @@ TEST(BinaryAddUp, addNegativeNumbersWithPositiveSum) {
 
 TEST(BinaryAddUp, addNegativeNumbersWithNegativeSum) {
     ASSERT_EQ(-18, BinaryAddUp::add(-20,2));
+}
+
+TEST(BinaryAddUp, biggestNonOverflowingNumberDoesNotThrowException) {
+    ASSERT_EQ(std::numeric_limits<int>::max(),
+              BinaryAddUp::add(std::numeric_limits<int>::max()-1,1));
+}
+
+TEST(BinaryAddUp, smallestNonOverflowingNumberDoesNotThrowException) {
+    ASSERT_EQ(std::numeric_limits<int>::min(),
+              BinaryAddUp::add(std::numeric_limits<int>::min()+1,-1));
 }
 
 TEST(BinaryAddUp, convertZeroToBitsetOfZeros) {
