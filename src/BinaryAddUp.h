@@ -12,7 +12,12 @@ namespace BinaryAddUp {
     }
 
     int add(int a, int b) {
+        auto aBits{intToBitset(a)};
+        auto bBits{intToBitset(b)};
         auto resultBits{intToBitset(0)};
+        for (size_t i=0; i<aBits.size(); ++i) {
+            resultBits[i] = aBits[i] or bBits[i];
+        }
         return resultBits.to_ulong();
     }
 }

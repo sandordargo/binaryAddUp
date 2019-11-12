@@ -7,6 +7,10 @@ TEST(BinaryAddUp, sumOfZeros_Is_Zero) {
     ASSERT_EQ(0, BinaryAddUp::add(0,0));
 }
 
+TEST(BinaryAddUp, addNumbersWithoutCarryOver) {
+    ASSERT_EQ(5, BinaryAddUp::add(1,4));
+}
+
 TEST(BinaryAddUp, convertZeroToBitsetOfZeros) {
     ASSERT_EQ(std::bitset<32>("00000000000000000000000000000000"), BinaryAddUp::intToBitset(0));
 }
