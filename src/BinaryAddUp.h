@@ -30,7 +30,7 @@ namespace BinaryAddUp {
                                       std::to_string(a) + ", " + std::to_string(b)};
         }
 
-        return resultBits.to_ulong();
+        return static_cast<int>(resultBits.to_ulong());
     }
 }
 
