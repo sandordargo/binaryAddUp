@@ -15,6 +15,18 @@ TEST(BinaryAddUp, addNumbersWithCarryOvers) {
     ASSERT_EQ(14, BinaryAddUp::add(11,3));
 }
 
+TEST(BinaryAddUp, addNegativeNumberWithZeroSum) {
+    ASSERT_EQ(0, BinaryAddUp::add(-2,2));
+}
+
+TEST(BinaryAddUp, addNegativeNumbersWithPositiveSum) {
+    ASSERT_EQ(18, BinaryAddUp::add(-2,20));
+}
+
+TEST(BinaryAddUp, addNegativeNumbersWithNegativeSum) {
+    ASSERT_EQ(-18, BinaryAddUp::add(-20,2));
+}
+
 TEST(BinaryAddUp, convertZeroToBitsetOfZeros) {
     ASSERT_EQ(std::bitset<32>("00000000000000000000000000000000"), BinaryAddUp::intToBitset(0));
 }
